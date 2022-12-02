@@ -4,25 +4,25 @@ const solc = require("solc");
 
 const compile = () => {
     try {
-    // build path where compiled contract will save
+    // Construye la ruta donde se guarda el contrato compilado
     const buildPath = path.resolve(__dirname,"./build");
 
-    // remove the build folder if it exist
+    // Elimina la carpeta del constructor si existe 
     fs.removeSync(buildPath);
 
-    // path of the Smart Contract
+    // la ruta del contrato inteligente 
     const contractPath = path.resolve(__dirname,"./contracts","Message.sol");
     
-    // Read the Smart Contract
+    // Lee el Contrato Inteligente
     const source = fs.readFileSync(contractPath, "utf8");
 
-    // Compile the smart contract
+    // Compila el CI
     const output = solc.compile(source, 1).contracts[":Message"];
     
-    // Create the build folder if it not exist 
+    // Crea la carpeta del constructor si no existe 
     fs.ensureDirSync(buildPath);
     
-    // Save the output in json format
+    // Guarda la salida en formato json
     fs.outputJSONSync(path.resolve(buildPath, "Message"+".json"), output);
 
     return "Contract compiled successfully!"

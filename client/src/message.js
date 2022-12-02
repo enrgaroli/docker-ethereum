@@ -18,13 +18,13 @@ class Message extends Component {
         this.onsubmitdeploy = this.onsubmitdeploy.bind(this);
     }
 
-    // on change of input, set the value to the message state
+    // con un cambio de la entrada, establece el valor en el estado del mensaje
     onChange(event) {
         this.setState({message: event.target.value });
     };
 
-    // on click on Compile button send the POST request to the localhost:4000/compile
-    // to compile the contract 
+    // con un click en el boton de compilar envia la peticion POST al localhost:4000/compile
+    // para compilar el contrato 
     onsubmitcompile = () => {
         axios.post(endpoint + "/compile").then(res => {
             this.setState({
@@ -33,8 +33,8 @@ class Message extends Component {
         })
     };
 
-    // on click on Deploy button send the POST request to the localhost:4000/deploy
-    // to deploy the contract
+    // con un click en el botón de despliegue envia la peticion POST al localhost:4000/deploy
+    // para desplegar el contrato
     onsubmitdeploy = () => {
         axios.post(endpoint + "/deploy").then(res => {
             this.setState({
@@ -43,8 +43,8 @@ class Message extends Component {
         })
     };
 
-    // on click of Set Message button send the POST request to the localhost:4000/ 
-    // with the message to set in the smart contract 
+    // con un click en el botón establece mensaje envia la respuesta POST al localhost:4000/ 
+    // con el mensaje para establecer en el CI  
     onsubmitsetmsg = () => {
         axios.post(endpoint + "/", {
             message: this.state.message 
@@ -55,8 +55,8 @@ class Message extends Component {
         })
     };
 
-    // on click of Get Message button send the GET request to the localhost:4000/
-    // to fetch the message from the smart contract 
+    // con un click en el boton de obtener mensaje envia la petición GET al localhost:4000/
+    // para extraer el mensaje del CI 
     onsubmitgetmsg = () => {
         axios.get(endpoint + "/").then(res => {
             this.setState({
